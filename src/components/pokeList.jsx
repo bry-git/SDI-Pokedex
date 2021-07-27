@@ -8,7 +8,7 @@ const PokeList = () => {
     const [pokemon, setPokemon] = useState([])
 
     const getAllPoke = async () => {
-         await fetch('https://pokeapi.co/api/v2/pokemon?limit=4')
+         await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
             .then(response => response.json())
             .then(data => {setPokemon(data.results)})
     }
@@ -19,9 +19,6 @@ const PokeList = () => {
 
     return (
         <div className="poke-list-root">
-          <span>pokemon list</span>
-            {console.log(pokemon)}
-  
              {pokemon.map((p) => <PokeListItem props={p}/>)}
         </div>
 
