@@ -1,6 +1,6 @@
-import { useEffect, useState, TextInput } from "react";
+//import { useEffect, useState, TextInput } from "react";
 import React from 'react';
-import fetch from 'node-fetch'
+//import fetch from 'node-fetch'
 
 
 function Navigation(props) {
@@ -34,9 +34,7 @@ function Navigation(props) {
     <div>
       <div className="navbar">
         <ul>
-          <li><a href="#">Link holder</a></li>
-          <li><a href="#">Link holder</a></li>
-          <li><a href="#">Link holder</a></li>
+          <li><a href="/">RETURN TO HOME</a></li>
         </ul>
       </div>
     </div>

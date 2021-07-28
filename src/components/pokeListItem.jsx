@@ -1,43 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import './pokeListItem.css'
 import App from '../App';
-import pokePage from './pokePage';
-
+import PokePage from './pokePage';
 import { Route, Link } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom';
+import fetch from 'node-fetch';
+
 
 
 const PokeListItem = (props) => {
 
     const [pokePic, setPokePic] = useState('')
+    const [pokeData, setPokeData] = useState('')
 
-    const pokemon = props.props.name
+    const pokemon = props.props
 
-    const getPic = async () => {
-        await fetch( props.props.url )
+    // get type, ability, environmentm, pic
+   
+    const getPokeData = async () => {
+        await fetch( pokemon.url )
             .then(resolve => resolve.json())
-            .then(pic => { setPokePic(pic.sprites.front_default) })
+            .then(data => {
+                setPokeData(data)
+                setPokePic(data.sprites.front_default)
+            })
     }
-
+    
     useEffect(() => {
-        getPic()
+        getPokeData() 
     }, [])
 
+
     return (
-        <div className="poke-list-item">
-            <a href={`/${pokemon}`}><div className="pokePic"><img src={pokePic}/></div>
-            <div className="pokeTitle">{props.props.name}<br /><br /><br /></div></a>
-            
+        <div className="poke-list-item" id={pokemon.name} >
+            <Router>
+                <Link to={`/pokePage/${pokemon.name}`}>
+                    <div className="pokePic"><img src={pokePic}/></div>
+                    <div className="pokeTitle">{pokemon.name}</div>
+                </Link>
+                <Route exact path={`/pokePage/${pokemon.name}`} component={() => <PokePage pokemon={pokeData}/> } />
+            </Router> 
         </div>
     )
 }
 
-
-
-
-
 export default PokeListItem;
-
-
-
-// 

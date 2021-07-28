@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import fetch from 'node-fetch';
-import ReactDOM from 'react-dom';
-import Header from './header';
-import Navigation from './navigation';
+import React, { useEffect } from 'react';
+// import fetch from 'node-fetch';
+// import ReactDOM from 'react-dom';
+// import Header from './header';
+// import Navigation from './navigation';
 
-const PokePage = () => {
+const PokePage = (props) => {
 
-    // const [ pokemon, setPokemon ] = useState('')
-
-    // const getPokeData = async () => {
-    //     await fetch(props.props.url)
-    //      .then(resolve => resolve.json())
-    //      .then(data => { setPokemon(data)) })
-    // }
-    
-    // useEffect(() => {
-    //     getPokeData()
-    // }, [])
+    useEffect(() => {
+        console.log('WE KNOW YOU KNOW', props.pokemon)
+    }, [])
 
     return(
+       
         <div className="poke-page">
-            <span>this is the individual pokemon page</span>
+            <div className="pokeTitle">
+                <p>{props.pokemon.name}</p>
+                <p>Weight: {props.pokemon.weight}</p>
+                
+                <p>Type-1: {props.pokemon.types[0].type.name}</p>
+                {/* <p>Location: {props.location_}</p> */}
+                </div>
+           
         </div>
     )
 }
