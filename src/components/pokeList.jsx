@@ -8,11 +8,11 @@ const PokeList = () => {
     const [pokemon, setPokemon] = useState([])
 
     const getAllPoke = async () => {
-         await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+         await fetch('https://pokeapi.co/api/v2/pokemon?limit=3')
             .then(response => response.json())
             .then(data => {setPokemon(data.results)})
     }
-    //use query param later = pokemon?limit=151'
+    
     useEffect(() => {
         getAllPoke()
     }, [])

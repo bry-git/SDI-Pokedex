@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './pokeListItem.css'
+import App from '../App';
+import pokePage from './pokePage';
 
+import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 const PokeListItem = (props) => {
 
     const [pokePic, setPokePic] = useState('')
+
+    const pokemon = props.props.name
 
     const getPic = async () => {
         await fetch( props.props.url )
@@ -19,8 +25,9 @@ const PokeListItem = (props) => {
 
     return (
         <div className="poke-list-item">
-            <a href="#"><div className="pokePic"><img src={pokePic}/></div>
+            <a href={`/${pokemon}`}><div className="pokePic"><img src={pokePic}/></div>
             <div className="pokeTitle">{props.props.name}<br /><br /><br /></div></a>
+            
         </div>
     )
 }

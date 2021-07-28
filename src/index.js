@@ -5,26 +5,27 @@ import Header from './components/header';
 import Navigation from './components/navigation';
 import App from './App';
 
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <Header />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('header')
 );
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <Navigation />
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('navigation')
 );
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <App />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 );
 
